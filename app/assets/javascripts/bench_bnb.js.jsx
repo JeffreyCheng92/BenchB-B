@@ -1,4 +1,4 @@
 $(function() {
-  var content = document.getElementsByClassName("content");
+  var content = document.getElementById("content");
   React.render(<BenchIndex/>, content);
 });
