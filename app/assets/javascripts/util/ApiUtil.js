@@ -3,7 +3,7 @@ ApiUtil = {
     $.ajax({
       type: 'GET',
       url: '/benches',
-      dataType: json,
+      dataType: "json",
       success: function(benches){
         ApiActions.receiveAll(benches);
       },
