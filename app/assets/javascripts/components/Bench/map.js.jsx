@@ -4,6 +4,8 @@ var BenchMap = React.createClass({
   },
 
   componentDidMount: function(){
+    this.markers = [];
+
     BenchStore.addChangeListener(this._onChange);
 
     var map = React.findDOMNode(this.refs.map);
@@ -29,6 +31,10 @@ var BenchMap = React.createClass({
   },
 
   placeMarkers: function() {
+    if (this.markers) {
+      this.resetMarkers();
+    }
+
     var marker;
 
     this.state.benches.forEach(function(bench) {
@@ -36,9 +42,16 @@ var BenchMap = React.createClass({
         position: {lat: bench.lat, lng: bench.lng},
         title: bench.description
       });
-
+      this.markers.push(marker);
       marker.setMap(this.map);
     }.bind(this));
+  },
+
+  resetMarkers: function() {
+    this.markers.forEach(function(marker, idx){
+      marker.setMap(null);
+    });
+    this.markers = [];
   },
 
   render: function() {
