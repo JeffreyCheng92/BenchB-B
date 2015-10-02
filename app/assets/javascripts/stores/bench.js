@@ -8,7 +8,6 @@
   };
 
   var _createBench = function(data) {
-    debugger
     _benches.push({ description: data.description,
                     lat: data.lat,
                     lng: data.lng,
@@ -36,7 +35,7 @@
           resetBenches(payload.benches);
           break;
         case BenchConstants.CREATE_BENCH:
-          root.BenchStore._createBench(payload.data);
+          _createBench(payload.data);
           break;
 
         default:

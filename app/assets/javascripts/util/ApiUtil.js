@@ -18,9 +18,10 @@ ApiUtil = {
     $.ajax({
       type: 'POST',
       url: '/benches',
+      data: formData,
       dataType: 'json',
       success: function(formData){
-        ApiActions.create(formData);
+        ApiActions.createBench(formData);
       },
       error: function() {
         debugger;
