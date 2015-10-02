@@ -7,6 +7,15 @@
     BenchStore.emit(CHANGE_EVENT);
   };
 
+  var _createBench = function(data) {
+    debugger
+    _benches.push({ description: data.description,
+                    lat: data.lat,
+                    lng: data.lng,
+                    seating: data.seating
+                  });
+  };
+
   root.BenchStore = $.extend({}, EventEmitter.prototype, {
     all: function() {
       return _benches.slice(0);
@@ -25,6 +34,9 @@
 
         case BenchConstants.BENCHES_RECEIVED:
           resetBenches(payload.benches);
+          break;
+        case BenchConstants.CREATE_BENCH:
+          root.BenchStore._createBench(payload.data);
           break;
 
         default:

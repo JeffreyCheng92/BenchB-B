@@ -4,20 +4,19 @@ var BenchForm = React.createClass({
       <div>
         <form>
           <label>Description</label>
-          <br>
+          <br/>
           <textarea rows="4" cols ="50"></textarea>
-          <br>
+          <br/>
           <label> Latitude </label>
-          <br>
           <input type='text'/>
-          <br>
+          <br/>
           <label> Longitude </label>
           <input type='text'/>
-          <br>
+          <br/>
           <input type="submit" value='submit'/>
         </form>
       </div>
-    )
+    );
   }
 
 });

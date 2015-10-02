@@ -9,14 +9,18 @@
 Bench.create([
   {description: 'cool bench m8',
     lat: 37.773972,
-    lng: -122.431297},
+    lng: -122.431297,
+    seating: 3
+  },
   {description: 'awsum bench m8',
     lat: 37.733205,
-    lng: -122.40982
+    lng: -122.40982,
+    seating: 2
   },
   {description: 'gr8 bench m8',
     lat: 37.710230,
-    lng: -122.426265
+    lng: -122.426265,
+    seating: 4
   },
 
   ])

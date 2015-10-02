@@ -5,4 +5,11 @@ ApiActions = {
       benches: benches
     });
   },
+
+  createBench: function(data) {
+    AppDispatcher.dispatch({
+      actionType: BenchConstants.CREATE_BENCH,
+      data: data
+    });
+  }
 };

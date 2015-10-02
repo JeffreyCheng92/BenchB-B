@@ -13,4 +13,18 @@ ApiUtil = {
       }
     });
   },
+
+  createBench: function(formData) {
+    $.ajax({
+      type: 'POST',
+      url: '/benches',
+      dataType: 'json',
+      success: function(formData){
+        ApiActions.create(formData);
+      },
+      error: function() {
+        debugger;
+      }
+    });
+  },
 };
