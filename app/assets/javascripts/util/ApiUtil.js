@@ -1,8 +1,9 @@
 ApiUtil = {
-  fetchBenches: function() {
+  fetchBenches: function(bounds) {
     $.ajax({
       type: 'GET',
       url: '/benches',
+      data: { bounds: bounds },
       dataType: "json",
       success: function(benches){
         ApiActions.receiveAll(benches);

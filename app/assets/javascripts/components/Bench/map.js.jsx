@@ -12,13 +12,23 @@ var BenchMap = React.createClass({
       zoom: 12
     };
     this.map = new google.maps.Map(map, mapOptions);
+    this.map.addListener('idle', this._onIdle);
   },
 
   _onChange: function() {
     this.setState( { benches: BenchStore.all() });
   },
 
-  render: function() {
+  _onIdle: function(event) {
+    var raw_bounds = this.map.getBounds();
+    var bounds = { "northEast" : { "lat" : raw_bounds.Ka.j,
+                                    "lng" : raw_bounds.Ga.H},
+                   "southWest" : { "lat" : raw_bounds.Ka.H,
+                                    "lng" : raw_bounds.Ga.j}};
+    ApiUtil.fetchBenches(bounds);
+  },
+
+  placeMarkers: function() {
     var marker;
 
     this.state.benches.forEach(function(bench) {
@@ -29,6 +39,10 @@ var BenchMap = React.createClass({
 
       marker.setMap(this.map);
     }.bind(this));
+  },
+
+  render: function() {
+    this.placeMarkers();
 
     return(
       <div className="map" ref="map"></div>
