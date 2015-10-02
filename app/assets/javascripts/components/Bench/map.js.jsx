@@ -1,5 +1,7 @@
 var BenchMap = React.createClass({
 
+
+
   render: function() {
     return(
       <div className="map" ref="google-map">
@@ -9,3 +11,5 @@ var BenchMap = React.createClass({
   }
 
 });
+
+// APIKEY = AIzaSyBCa5cbD09AaADpBNbfxxPBHKNgtqlusq4
