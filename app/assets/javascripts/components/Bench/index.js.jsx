@@ -13,7 +13,6 @@ var BenchIndex = React.createClass({
   },
 
   _onChange: function() {
-    debugger
     this.setState( { benches: BenchStore.all() });
   },
 
