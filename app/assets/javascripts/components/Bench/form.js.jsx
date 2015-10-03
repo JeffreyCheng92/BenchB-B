@@ -33,7 +33,7 @@ var BenchForm = React.createClass({
           <label> Seating: </label>
           <input type="number" min="1" step="1" ref='seating'/>
           <br/>
-          <input type="submit" value='submit'/>
+          <input type="submit" value='Submit'/>
         </form>
       </div>
     );

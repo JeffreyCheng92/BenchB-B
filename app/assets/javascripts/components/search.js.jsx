@@ -19,6 +19,7 @@ var Search = React.createClass({
   render: function() {
     return (
       <div>
+        <Seating/>
         <BenchIndex/>
         <BenchMap/>
       </div>
