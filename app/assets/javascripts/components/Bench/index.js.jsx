@@ -8,7 +8,7 @@ var BenchIndex = React.createClass({
   },
 
   componentWillUnmount: function() {
-    BenchStore.removeChangeListener();
+    BenchStore.removeChangeListener(this._onChange);
   },
 
   _onChange: function() {
@@ -20,7 +20,7 @@ var BenchIndex = React.createClass({
       <div>
         {
           this.state.benches.map(function(bench) {
-            return (<div> {bench.description} </div>)
+            return (<div> {bench.description} </div>);
           })
         }
       </div>

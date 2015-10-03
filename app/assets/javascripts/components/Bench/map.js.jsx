@@ -1,4 +1,6 @@
 var BenchMap = React.createClass({
+  mixins: [ReactRouter.History],
+
   getInitialState: function() {
     return { benches: BenchStore.all() };
   },
@@ -15,6 +17,7 @@ var BenchMap = React.createClass({
     };
     this.map = new google.maps.Map(map, mapOptions);
     this.map.addListener('idle', this._onIdle);
+    this.map.addListener('click', this._onClick);
   },
 
   _onChange: function() {
@@ -28,6 +31,12 @@ var BenchMap = React.createClass({
                    "southWest" : { "lat" : raw_bounds.Ka.H,
                                     "lng" : raw_bounds.Ga.j}};
     ApiUtil.fetchBenches(bounds);
+  },
+
+  _onClick: function(event) {
+    var loc = event.latLng;
+    var coords = { lat: loc.lat(), lng: loc.lng() };
+    this.history.pushState(null, "benches/new", coords);
   },
 
   placeMarkers: function() {

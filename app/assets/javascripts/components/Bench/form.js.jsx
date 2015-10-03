@@ -12,6 +12,10 @@ var BenchForm = React.createClass({
     ApiUtil.createBench(formData);
   },
 
+  coords: function() {
+    return this.props.location.query;
+  },
+
   render: function() {
     return(
       <div>
@@ -21,10 +25,10 @@ var BenchForm = React.createClass({
           <textarea rows="4" cols ="50" ref='desc'></textarea>
           <br/>
           <label> Latitude: </label>
-          <input type='text' ref='lat'/>
+          <input type='text' ref='lat' value={this.coords().lat}/>
           <br/>
           <label> Longitude: </label>
-          <input type='text' ref='lng'/>
+          <input type='text' ref='lng' value={this.coords().lng}/>
           <br/>
           <label> Seating: </label>
           <input type="number" min="1" step="1" ref='seating'/>
