@@ -1,9 +1,9 @@
 ApiUtil = {
-  fetchBenches: function(bounds) {
+  fetchBenches: function(data) {
     $.ajax({
       type: 'GET',
       url: '/benches',
-      data: { bounds: bounds },
+      data: data,
       dataType: "json",
       success: function(benches){
         ApiActions.receiveAll(benches);
@@ -27,5 +27,9 @@ ApiUtil = {
         debugger;
       }
     });
+  },
+
+  addParam: function(data) {
+    FilterActions.addParam(data);
   },
 };
