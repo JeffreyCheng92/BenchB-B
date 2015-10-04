@@ -12,8 +12,9 @@ var Search = React.createClass({
   },
 
   _onChange: function(event) {
-    this.setState({ filterParams: FilterStore.all() });
-    ApiUtil.fetchBenches(this.state.filterParams);
+    this.setState({ filterParams: FilterStore.all() }, function() {
+      ApiUtil.fetchBenches(this.state.filterParams);
+    });
   },
 
   render: function() {

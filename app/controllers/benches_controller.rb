@@ -1,7 +1,12 @@
 class BenchesController < ApplicationController
   def index
-    # debugger
     @benches = Bench.in_bounds(params[:bounds])
+
+    if params[:seats]
+      min, max = [ params[:seats][0].to_i, params[:seats][1].to_i ]
+      @benches = @benches.select { |bench| bench.seating.between?(min, max)}
+    end
+
     render json: @benches
   end
 
