@@ -21,9 +21,7 @@ var BenchIndex = React.createClass({
         {
           this.state.benches.map(function(bench) {
             return (
-              <div key={bench.id}>
-                {bench.description}, {bench.seating}
-              </div>
+              <IndexItem bench={bench} key={bench.id} />
             );
           })
         }

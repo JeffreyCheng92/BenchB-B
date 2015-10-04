@@ -30,8 +30,7 @@ var BenchMap = React.createClass({
                                     "lng" : raw_bounds.Ga.H},
                    "southWest" : { "lat" : raw_bounds.Ka.H,
                                     "lng" : raw_bounds.Ga.j}};
-    ApiUtil.addParam({bounds: bounds});                                
-    // ApiUtil.fetchBenches(bounds);
+    ApiUtil.addParam({bounds: bounds});
   },
 
   _onClick: function(event) {
