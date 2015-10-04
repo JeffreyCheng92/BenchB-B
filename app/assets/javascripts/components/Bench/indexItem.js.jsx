@@ -3,8 +3,7 @@ var IndexItem = React.createClass({
 
   _clickHandler: function() {
     var id = this.props.bench.id;
-    debugger
-    // this.history.pushState(null, "benches/" + id, coords);
+    this.history.pushState(null, "benches/" + id, this.props.bench);
   },
 
   render: function() {
