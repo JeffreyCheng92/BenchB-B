@@ -1,4 +1,6 @@
 $(function() {
+  import createBrowserHistory from 'history/lib/createBrowserHistory';
+
   var root = document.getElementById('content');
   var Route = ReactRouter.Route;
   var Router = ReactRouter.Router;
@@ -15,11 +17,16 @@ $(function() {
     }
   });
   var routes = (
-      <Route path="/" component={App}>
-        <IndexRoute component={Search}/>
-        <Route path="/benches/new" component={BenchForm}/>
-        <Route path="/benches/:id" component={BenchShow}/>
-      </Route>
+    <Route path="/" component={App}>
+      <IndexRoute component={Search}/>
+      <Route path="/benches/new" component={BenchForm}/>
+      <Route path="/benches/:id" component={BenchShow}/>
+    </Route>
   );
-  React.render(<Router>{routes}</Router>, root);
+  React.render(
+    <Router history={createBrowserHistory()}>
+      {routes}
+    </Router>,
+    root
+  );
 });
