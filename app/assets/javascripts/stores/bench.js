@@ -1,5 +1,6 @@
 (function(root){
   var _benches = [];
+  var _currentBench = {};
   var CHANGE_EVENT = "change";
 
   var resetBenches = function(benches) {
@@ -15,9 +16,18 @@
                   });
   };
 
+  var _setBenchShow = function(bench) {
+    _currentBench = bench;
+    BenchStore.emit(CHANGE_EVENT);
+  };
+
   root.BenchStore = $.extend({}, EventEmitter.prototype, {
     all: function() {
       return _benches.slice(0);
+    },
+
+    showBench: function() {
+      return $.extend(true, {}, _currentBench);
     },
 
     addChangeListener: function(callback) {
@@ -37,7 +47,9 @@
         case BenchConstants.CREATE_BENCH:
           _createBench(payload.data);
           break;
-
+        case BenchConstants.BENCH_RECEIVED:
+          _setBenchShow(payload.bench);
+          break;
         default:
           // No-op
       }

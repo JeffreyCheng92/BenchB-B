@@ -6,6 +6,13 @@ ApiActions = {
     });
   },
 
+  receiveBench: function(bench) {
+    AppDispatcher.dispatch({
+      actionType: BenchConstants.BENCH_RECEIVED,
+      bench: bench
+    });
+  },
+
   createBench: function(data) {
     AppDispatcher.dispatch({
       actionType: BenchConstants.CREATE_BENCH,

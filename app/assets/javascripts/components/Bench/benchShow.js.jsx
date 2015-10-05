@@ -1,16 +1,32 @@
 var BenchShow = React.createClass({
+  getInitialState: function() {
+    return { bench: {} };
+  },
+
+  componentDidMount: function() {
+    ApiUtil.fetchBench(parseInt(this.props.params.id));
+    BenchStore.addChangeListener(this._onChange);
+  },
+
+  componentWillUnmount: function() {
+    BenchStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function() {
+    this.setState({ bench: BenchStore.showBench() });
+  },
 
   render: function() {
-    this.bench = this.props.location.query;
+    // this.bench = this.props.location.query;
     return (
       <div>
-        Description: {this.bench.description}
+        Description: {this.state.bench.description}
         <br/>
-        Latitude: {this.bench.lat}
+        Latitude: {this.state.bench.lat}
         <br/>
-        Longitude: {this.bench.lng}
+        Longitude: {this.state.bench.lng}
         <br/>
-        Seats: {this.bench.seating}
+        Seats: {this.state.bench.seating}
       </div>
     );
   }
