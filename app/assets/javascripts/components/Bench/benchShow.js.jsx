@@ -4,6 +4,7 @@ var BenchShow = React.createClass({
   },
 
   componentDidMount: function() {
+    console.log(this.props.params.id);
     ApiUtil.fetchBench(parseInt(this.props.params.id));
     BenchStore.addChangeListener(this._onChange);
   },
@@ -17,16 +18,19 @@ var BenchShow = React.createClass({
   },
 
   render: function() {
-    // this.bench = this.props.location.query;
+    var lat = parseFloat(this.state.bench.lat);
+    var lng = parseFloat(this.state.bench.lng);
     return (
       <div>
         Description: {this.state.bench.description}
         <br/>
-        Latitude: {this.state.bench.lat}
+        Latitude: {lat}
         <br/>
-        Longitude: {this.state.bench.lng}
+        Longitude: {lng}
         <br/>
         Seats: {this.state.bench.seating}
+        <br/>
+        <BenchMap center={{lat: lat, lng: lng}}/>
       </div>
     );
   }

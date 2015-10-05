@@ -1,6 +1,6 @@
 $(function() {
-  import createBrowserHistory from 'history/lib/createBrowserHistory';
-
+  // const createBrowserHistory = require('history/lib/createBrowserHistory');
+  
   var root = document.getElementById('content');
   var Route = ReactRouter.Route;
   var Router = ReactRouter.Router;
@@ -24,7 +24,8 @@ $(function() {
     </Route>
   );
   React.render(
-    <Router history={createBrowserHistory()}>
+    // history={createBrowserHistory()}
+    <Router>
       {routes}
     </Router>,
     root

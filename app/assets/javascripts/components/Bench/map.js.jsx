@@ -20,6 +20,11 @@ var BenchMap = React.createClass({
     this.map.addListener('click', this._onClick);
   },
 
+  componentDidUpdate: function () {
+    this.map.setCenter({lat: this.props.center.lat,
+                        lng: this.props.center.lng});
+  },
+
   componentWillUnmount: function() {
     BenchStore.removeChangeListener(this._onChange);
     google.maps.event.clearInstanceListeners(this.map);
@@ -59,9 +64,11 @@ var BenchMap = React.createClass({
       });
       this.markers.push(marker);
       marker.setMap(this.map);
+    }.bind(this));
 
-      google.maps.event.addListener(marker, 'click', function() {
-        this.history.pushState(null, marker.url);
+    this.markers.forEach(function(mark) {
+      mark.addListener('click', function(){
+        this.history.pushState(null, mark.url);
       }.bind(this));
     }.bind(this));
   },
@@ -74,8 +81,9 @@ var BenchMap = React.createClass({
   },
 
   render: function() {
-    this.placeMarkers();
-
+    if (this.markers) {
+      this.placeMarkers();
+    }
     return(
       <div className="map" ref="map"></div>
     );

@@ -22,7 +22,7 @@ var Search = React.createClass({
       <div>
         <Seating/>
         <BenchIndex/>
-        <BenchMap/>
+        <BenchMap center={{lat: 37.7538, lng: -122.435}}/>
       </div>
     );
   }
